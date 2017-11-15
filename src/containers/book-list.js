@@ -1,24 +1,23 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
+//BookList is a container because it needed to be aware of the application level state
+// -- the state set in index.js reducer.
 class BookList extends Component {
-  renderList(){
-    return this.props.books.map((bookObj) => {
-      return(
-        <li key={bookObj.title} className="list-group-item" > {bookObj.title} </li>
-
-      );
-
-
-    });
-  }
-
   render() {
     return (
       <ul className="list-group col-sm-4">
         {this.renderList()}
       </ul>
     )
+  }
+
+  renderList(){
+    return this.props.books.map((bookObj) => {
+      return(
+        <li key={bookObj.spot} className="list-group-item" > {bookObj.spot} - {bookObj.title} </li>
+      );
+    });
   }
 }
 
